@@ -1,20 +1,39 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rafael Gonzalez Frowein — Full Stack Developer</title>
+    <title data-i18n="meta.title">Rafael Gonzalez Frowein — Full Stack Developer</title>
     <meta
       name="description"
-      content="Full Stack Developer con 9 años de experiencia en .NET, Node.js y React. Montevideo, Uruguay. Disponible para roles full stack o backend, remoto o híbrido."
+      content="Full Stack Developer with 9 years of experience in .NET, Node.js and React. Montevideo, Uruguay. Available for full stack or backend roles, remote or hybrid."
+      data-i18n-content="meta.description"
     />
     <meta name="theme-color" content="#07080a" />
-    <meta property="og:title" content="Rafael Gonzalez Frowein — Full Stack Developer" />
+    <meta property="og:title" content="Rafael Gonzalez Frowein — Full Stack Developer" data-i18n-content="meta.title" />
     <meta
       property="og:description"
-      content="9 años construyendo aplicaciones web, APIs y servicios en la nube. .NET · Node.js · React. Montevideo, Uruguay."
+      content="9 years building web applications, APIs and cloud services. .NET · Node.js · React. Montevideo, Uruguay."
+      data-i18n-content="meta.ogDescription"
     />
     <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="en_US" data-i18n-content="meta.locale" />
+    <script>
+      // Aplica el idioma guardado antes del primer render para evitar parpadeos.
+      (function () {
+        var supported = ["en", "es"];
+        var fromUrl = null;
+        var stored = null;
+        try {
+          fromUrl = new URLSearchParams(window.location.search).get("lang");
+        } catch (error) {}
+        try {
+          stored = localStorage.getItem("portfolio.lang");
+        } catch (error) {}
+        var lang = supported.indexOf(fromUrl) !== -1 ? fromUrl : supported.indexOf(stored) !== -1 ? stored : "en";
+        document.documentElement.lang = lang;
+      })();
+    </script>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0d12'/%3E%3Cpath d='M18 46V18h14a10 10 0 0 1 0 20h-8l12 8' fill='none' stroke='%235eead4' stroke-width='4' stroke-linecap='square'/%3E%3C/svg%3E"
@@ -40,25 +59,31 @@
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <a class="skip-link" href="#contenido" data-i18n="a11y.skip">Skip to content</a>
 
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="Inicio">
+      <a class="brand" href="#top" aria-label="Home" data-i18n-aria-label="brand.aria">
         <span class="brand-mark" aria-hidden="true">R</span>
         <span class="brand-text">rafael<span class="dim">.dev</span></span>
       </a>
 
-      <nav class="nav" aria-label="Secciones">
-        <a href="#experiencia">experiencia</a>
-        <a href="#stack">stack</a>
-        <a href="#proyectos">proyectos</a>
-        <a href="#contacto">contacto</a>
+      <nav class="nav" aria-label="Sections" data-i18n-aria-label="nav.aria">
+        <a href="#experiencia" data-i18n="nav.experience">experience</a>
+        <a href="#stack" data-i18n="nav.stack">stack</a>
+        <a href="#proyectos" data-i18n="nav.projects">projects</a>
+        <a href="#contacto" data-i18n="nav.contact">contact</a>
       </nav>
 
-      <span class="status" title="Disponible para trabajar">
+      <span class="status" title="Available for work" data-i18n-title="status.title">
         <span class="status-dot" aria-hidden="true"></span>
         open to work
       </span>
+
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria-label="lang.label">
+        <button type="button" data-set-lang="en" aria-pressed="true" aria-label="English" lang="en">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false" aria-label="Español" lang="es">ES</button>
+      </div>
+      <span class="sr-only" id="lang-status" role="status" aria-live="polite"></span>
     </header>
 
     <main id="contenido">
@@ -66,75 +91,88 @@
         <div class="hero-copy">
           <p class="eyebrow"><span class="prompt" aria-hidden="true">&gt;</span> full stack developer</p>
           <h1>Rafael<br />Gonzalez Frowein</h1>
-          <p class="lead">
-            9 años construyendo aplicaciones web, APIs y servicios en la nube. Backend con
-            <strong>.NET</strong> y <strong>Node.js</strong>, frontend con <strong>React</strong> y
+          <p class="lead" data-i18n="hero.lead">
+            9 years building web applications, APIs and cloud services. Backend with
+            <strong>.NET</strong> and <strong>Node.js</strong>, frontend with <strong>React</strong> and
             <strong>Angular</strong>.
           </p>
 
           <ul class="meta">
-            <li><span class="meta-key">loc</span> Montevideo, Uruguay</li>
-            <li><span class="meta-key">modo</span> remoto / híbrido</li>
-            <li><span class="meta-key">idiomas</span> español · inglés profesional</li>
+            <li><span class="meta-key" data-i18n="hero.meta.locationKey">loc</span> Montevideo, Uruguay</li>
+            <li>
+              <span class="meta-key" data-i18n="hero.meta.modeKey">mode</span>
+              <span data-i18n="hero.meta.mode">remote / hybrid</span>
+            </li>
+            <li>
+              <span class="meta-key" data-i18n="hero.meta.languagesKey">languages</span>
+              <span data-i18n="hero.meta.languages">Spanish · professional English</span>
+            </li>
           </ul>
 
           <div class="actions">
-            <a class="btn btn-primary" href="#experiencia">ver experiencia</a>
-            <a class="btn" href="mailto:rgonzalezfro@gmail.com">escribirme</a>
-            <a class="btn" href="cv-rafael-gonzalez-frowein.pdf" download>descargar cv</a>
+            <a class="btn btn-primary" href="#experiencia" data-i18n="hero.action.experience">view experience</a>
+            <a class="btn" href="mailto:rgonzalezfro@gmail.com" data-i18n="hero.action.email">email me</a>
+            <a
+              class="btn"
+              href="cv-rafael-gonzalez-frowein-en.pdf"
+              download
+              data-i18n="hero.action.cv"
+              data-i18n-href="hero.action.cvHref"
+              >download cv</a
+            >
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/rgonzalezfro/" target="_blank" rel="noopener">
               linkedin <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
 
-        <aside class="terminal" aria-label="Resumen de perfil">
+        <aside class="terminal" aria-label="Profile summary" data-i18n-aria-label="terminal.asideAria">
           <div class="terminal-bar">
             <span class="dot red" aria-hidden="true"></span>
             <span class="dot yellow" aria-hidden="true"></span>
             <span class="dot green" aria-hidden="true"></span>
-            <span class="terminal-title">perfil.json</span>
+            <span class="terminal-title" data-i18n="terminal.title">profile.json</span>
           </div>
-          <pre class="terminal-body" aria-label="Perfil en formato JSON"><code><span class="t-prompt">$</span> cat perfil.json
+          <pre class="terminal-body"><code><span class="t-prompt">$</span> <span data-i18n="terminal.command">cat profile.json</span>
 {
-  <span class="t-key">"rol"</span>: <span class="t-str">"Full Stack Developer"</span>,
-  <span class="t-key">"stack"</span>: [<span class="t-str">".NET"</span>, <span class="t-str">"Node.js"</span>, <span class="t-str">"React"</span>],
-  <span class="t-key">"base"</span>: <span class="t-str">"Montevideo, UY"</span>,
-  <span class="t-key">"modalidad"</span>: <span class="t-str">"remoto / híbrido"</span>,
-  <span class="t-key">"experiencia"</span>: <span class="t-num">9</span>,
-  <span class="t-key">"estado"</span>: <span class="t-str">"open to work"</span>
+  <span class="t-key" data-i18n="terminal.key.role">"role"</span>: <span class="t-str">"Full Stack Developer"</span>,
+  <span class="t-key" data-i18n="terminal.key.stack">"stack"</span>: [<span class="t-str">".NET"</span>, <span class="t-str">"Node.js"</span>, <span class="t-str">"React"</span>],
+  <span class="t-key" data-i18n="terminal.key.base">"base"</span>: <span class="t-str">"Montevideo, UY"</span>,
+  <span class="t-key" data-i18n="terminal.key.mode">"mode"</span>: <span class="t-str" data-i18n="terminal.value.mode">"remote / hybrid"</span>,
+  <span class="t-key" data-i18n="terminal.key.experience">"experience"</span>: <span class="t-num">9</span>,
+  <span class="t-key" data-i18n="terminal.key.status">"status"</span>: <span class="t-str">"open to work"</span>
 }<span class="cursor" aria-hidden="true">▌</span></code></pre>
         </aside>
 
-        <ul class="stats" aria-label="Números">
-          <li><span class="stat-num">9</span><span class="stat-label">años de experiencia</span></li>
-          <li><span class="stat-num">8</span><span class="stat-label">equipos</span></li>
-          <li><span class="stat-num">3</span><span class="stat-label">productos en 2026</span></li>
-          <li><span class="stat-num">2</span><span class="stat-label">idiomas</span></li>
+        <ul class="stats">
+          <li><span class="stat-num">9</span><span class="stat-label" data-i18n="stats.years">years of experience</span></li>
+          <li><span class="stat-num">8</span><span class="stat-label" data-i18n="stats.teams">teams</span></li>
+          <li><span class="stat-num">3</span><span class="stat-label" data-i18n="stats.products">products in 2026</span></li>
+          <li><span class="stat-num">2</span><span class="stat-label" data-i18n="stats.languages">languages</span></li>
         </ul>
       </section>
 
       <section class="section" id="experiencia">
         <header class="section-head">
           <span class="section-index" aria-hidden="true">[ 01 ]</span>
-          <h2>Experiencia</h2>
+          <h2 data-i18n="section.experience">Experience</h2>
           <span class="section-rule" aria-hidden="true"></span>
         </header>
 
         <ol class="timeline">
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">ago 2023 — jul 2026</span>
-              <span class="entry-place">Argentina (remoto)</span>
+              <span class="entry-period" data-i18n="exp.trick.period">Aug 2023 — Jul 2026</span>
+              <span class="entry-place" data-i18n="exp.trick.place">Argentina (remote)</span>
             </div>
             <div class="entry-body">
-              <h3>Desarrollador de videojuegos <span class="entry-role">(Unity / C#)</span></h3>
+              <h3><span data-i18n="exp.trick.title">Game Developer</span> <span class="entry-role">(Unity / C#)</span></h3>
               <p class="entry-company">Trick Gaming Studio</p>
               <ul class="bullets">
-                <li>Desarrollé features end-to-end en C#/Unity, desde el diseño técnico hasta producción, coordinando con arte, diseño y QA.</li>
-                <li>Lideré el port de mobile a PC de un título en producción: refactor multiplataforma e integración de Steam API (autenticación, logros, social y compras in-app).</li>
-                <li>Construí servicios backend con Go y Nakama para las funciones online del juego.</li>
-                <li>Integré plataformas de distribución como Steam y Google Play.</li>
+                <li data-i18n="exp.trick.b1">Built end-to-end features in C#/Unity, from technical design to production, coordinating with art, design and QA.</li>
+                <li data-i18n="exp.trick.b2">Led the mobile-to-PC port of a live title: cross-platform refactor and Steam API integration (authentication, achievements, social and in-app purchases).</li>
+                <li data-i18n="exp.trick.b3">Built backend services with Go and Nakama for the game's online features.</li>
+                <li data-i18n="exp.trick.b4">Integrated distribution platforms such as Steam and Google Play.</li>
               </ul>
               <ul class="tags">
                 <li>C#</li><li>.NET</li><li>Unity</li><li>Go</li><li>Nakama</li><li>Steam API</li>
@@ -144,15 +182,15 @@
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">jun 2021 — mar 2023</span>
-              <span class="entry-place">Argentina (remoto)</span>
+              <span class="entry-period" data-i18n="exp.otherguys.period">Jun 2021 — Mar 2023</span>
+              <span class="entry-place" data-i18n="exp.otherguys.place">Argentina (remote)</span>
             </div>
             <div class="entry-body">
-              <h3>Desarrollador de videojuegos <span class="entry-role">(Unity)</span></h3>
+              <h3><span data-i18n="exp.otherguys.title">Game Developer</span> <span class="entry-role">(Unity)</span></h3>
               <p class="entry-company">The Other Guys</p>
               <ul class="bullets">
-                <li>Desarrollé y optimicé mecánicas core en Unity y C#/.NET, con foco en uso eficiente de memoria y principios SOLID.</li>
-                <li>Mantuve y depuré servicios backend en Node.js y MongoDB sobre AWS, incluyendo diagnóstico de incidentes en producción.</li>
+                <li data-i18n="exp.otherguys.b1">Developed and optimized core mechanics in Unity and C#/.NET, focusing on efficient memory usage and SOLID principles.</li>
+                <li data-i18n="exp.otherguys.b2">Maintained and debugged Node.js and MongoDB backend services on AWS, including production incident diagnosis.</li>
               </ul>
               <ul class="tags">
                 <li>C#</li><li>.NET</li><li>Unity</li><li>Node.js</li><li>MongoDB</li><li>AWS</li>
@@ -162,32 +200,32 @@
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">nov 2021 — mar 2022</span>
-              <span class="entry-place">Remoto · part-time</span>
+              <span class="entry-period" data-i18n="exp.coderhouse.period">Nov 2021 — Mar 2022</span>
+              <span class="entry-place" data-i18n="exp.coderhouse.place">Remote · part-time</span>
             </div>
             <div class="entry-body">
-              <h3>Tutor de desarrollo de videojuegos</h3>
+              <h3 data-i18n="exp.coderhouse.title">Game Development Tutor</h3>
               <p class="entry-company">Coderhouse</p>
               <ul class="bullets">
-                <li>Mentoreé proyectos de videojuegos: code reviews, debugging y guía de arquitectura para llevar el proyecto de cero a publicación.</li>
+                <li data-i18n="exp.coderhouse.b1">Mentored game development projects: code reviews, debugging and architecture guidance to take projects from zero to release.</li>
               </ul>
               <ul class="tags">
-                <li>Unity</li><li>C#</li><li>Mentoría</li>
+                <li>Unity</li><li>C#</li><li data-i18n="tag.mentoring">Mentoring</li>
               </ul>
             </div>
           </li>
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">may 2020 — may 2021</span>
-              <span class="entry-place">Remoto</span>
+              <span class="entry-period" data-i18n="exp.southworks.period">May 2020 — May 2021</span>
+              <span class="entry-place" data-i18n="exp.southworks.place">Remote</span>
             </div>
             <div class="entry-body">
-              <h3>Full Stack Developer</h3>
+              <h3 data-i18n="exp.southworks.title">Full Stack Developer</h3>
               <p class="entry-company">SOUTHWORKS</p>
               <ul class="bullets">
-                <li>Desarrollé soluciones full stack para clientes globales con Node.js, .NET Core, Angular y React Native.</li>
-                <li>Diseñé arquitecturas serverless en AWS, integrando servicios cloud para mejorar escalabilidad y confiabilidad.</li>
+                <li data-i18n="exp.southworks.b1">Built full stack solutions for global clients with Node.js, .NET Core, Angular and React Native.</li>
+                <li data-i18n="exp.southworks.b2">Designed serverless architectures on AWS, integrating cloud services to improve scalability and reliability.</li>
               </ul>
               <ul class="tags">
                 <li>Node.js</li><li>.NET Core</li><li>Angular</li><li>React Native</li><li>AWS</li>
@@ -197,32 +235,32 @@
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">oct 2019 — may 2020</span>
-              <span class="entry-place">Remoto · part-time</span>
+              <span class="entry-period" data-i18n="exp.acamica.period">Oct 2019 — May 2020</span>
+              <span class="entry-place" data-i18n="exp.acamica.place">Remote · part-time</span>
             </div>
             <div class="entry-body">
-              <h3>Mentor Full Stack</h3>
+              <h3 data-i18n="exp.acamica.title">Full Stack Mentor</h3>
               <p class="entry-company">Acámica</p>
               <ul class="bullets">
-                <li>Dicté clases y mentoreé un programa intensivo full stack: HTML5, CSS3, JavaScript, Node.js y MongoDB.</li>
+                <li data-i18n="exp.acamica.b1">Taught classes and mentored an intensive full stack program: HTML5, CSS3, JavaScript, Node.js and MongoDB.</li>
               </ul>
               <ul class="tags">
-                <li>JavaScript</li><li>Node.js</li><li>MongoDB</li><li>Mentoría</li>
+                <li>JavaScript</li><li>Node.js</li><li>MongoDB</li><li data-i18n="tag.mentoring">Mentoring</li>
               </ul>
             </div>
           </li>
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">oct 2019 — feb 2020</span>
+              <span class="entry-period" data-i18n="exp.fyo.period">Oct 2019 — Feb 2020</span>
               <span class="entry-place">Rosario, Argentina</span>
             </div>
             <div class="entry-body">
               <h3>.NET Developer</h3>
               <p class="entry-company">fyo</p>
               <ul class="bullets">
-                <li>Desarrollé aplicaciones de escritorio empresariales con WPF y .NET Framework, a cargo del ciclo completo desde el relevamiento hasta producción.</li>
-                <li>Implementé el backend con SQL Server y Entity Framework para modelos de datos complejos.</li>
+                <li data-i18n="exp.fyo.b1">Built enterprise desktop applications with WPF and .NET Framework, owning the full cycle from requirements gathering to production.</li>
+                <li data-i18n="exp.fyo.b2">Implemented the backend with SQL Server and Entity Framework for complex data models.</li>
               </ul>
               <ul class="tags">
                 <li>C#</li><li>.NET Framework</li><li>WPF</li><li>SQL Server</li><li>Entity Framework</li>
@@ -232,16 +270,16 @@
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">jun 2018 — sep 2019</span>
+              <span class="entry-period" data-i18n="exp.globant.period">Jun 2018 — Sep 2019</span>
               <span class="entry-place">Rosario, Argentina</span>
             </div>
             <div class="entry-body">
               <h3>Backend .NET Developer</h3>
               <p class="entry-company">Globant</p>
               <ul class="bullets">
-                <li>Desarrollé servicios backend en .NET Framework y optimicé capas de acceso a datos con ADO.NET.</li>
-                <li>Implementé microservicios con Azure Service Fabric y Service Bus; integré APIs de terceros (Zoom) en flujos empresariales.</li>
-                <li>Administré bases SQL Server para herramientas de analítica y reporting.</li>
+                <li data-i18n="exp.globant.b1">Built backend services in .NET Framework and optimized data access layers with ADO.NET.</li>
+                <li data-i18n="exp.globant.b2">Implemented microservices with Azure Service Fabric and Service Bus; integrated third-party APIs (Zoom) into enterprise workflows.</li>
+                <li data-i18n="exp.globant.b3">Managed SQL Server databases for analytics and reporting tools.</li>
               </ul>
               <ul class="tags">
                 <li>C#</li><li>.NET</li><li>Azure</li><li>Microservices</li><li>SQL Server</li>
@@ -251,15 +289,15 @@
 
           <li class="entry">
             <div class="entry-meta">
-              <span class="entry-period">abr 2017 — may 2018</span>
+              <span class="entry-period" data-i18n="exp.qgood.period">Apr 2017 — May 2018</span>
               <span class="entry-place">Rosario, Argentina</span>
             </div>
             <div class="entry-body">
-              <h3>Full Stack Developer</h3>
+              <h3 data-i18n="exp.qgood.title">Full Stack Developer</h3>
               <p class="entry-company">QGood</p>
               <ul class="bullets">
-                <li>Desarrollé aplicaciones web empresariales de punta a punta: front-end con HTML5, CSS3 y jQuery; backend con .NET Framework.</li>
-                <li>Implementé la persistencia con NHibernate sobre SQL relacional.</li>
+                <li data-i18n="exp.qgood.b1">Built enterprise web applications end to end: front end with HTML5, CSS3 and jQuery; backend with .NET Framework.</li>
+                <li data-i18n="exp.qgood.b2">Implemented persistence with NHibernate over relational SQL.</li>
               </ul>
               <ul class="tags">
                 <li>C#</li><li>.NET Framework</li><li>NHibernate</li><li>jQuery</li><li>SQL</li>
@@ -272,70 +310,70 @@
       <section class="section" id="stack">
         <header class="section-head">
           <span class="section-index" aria-hidden="true">[ 02 ]</span>
-          <h2>Stack</h2>
+          <h2 data-i18n="section.stack">Stack</h2>
           <span class="section-rule" aria-hidden="true"></span>
         </header>
 
         <div class="stack-grid">
           <article class="panel">
-            <h3>Lenguajes</h3>
+            <h3 data-i18n="stack.languages">Languages</h3>
             <ul class="skills">
-              <li><span>C#</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
-              <li><span>JavaScript</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>TypeScript</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
+              <li><span>C#</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
+              <li><span>JavaScript</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>TypeScript</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
             </ul>
           </article>
 
           <article class="panel">
-            <h3>Backend</h3>
+            <h3 data-i18n="stack.backend">Backend</h3>
             <ul class="skills">
-              <li><span>.NET</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
-              <li><span>Node.js</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>Microservices</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>Go</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
-              <li><span>Supabase</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
+              <li><span>.NET</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
+              <li><span>Node.js</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>Microservices</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>Go</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
+              <li><span>Supabase</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
             </ul>
           </article>
 
           <article class="panel">
-            <h3>Frontend</h3>
+            <h3 data-i18n="stack.frontend">Frontend</h3>
             <ul class="skills">
-              <li><span>React</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>Angular</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>React Native</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
-              <li><span>HTML</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
-              <li><span>CSS</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
+              <li><span>React</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>Angular</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>React Native</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
+              <li><span>HTML</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
+              <li><span>CSS</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
             </ul>
           </article>
 
           <article class="panel">
-            <h3>Bases de datos</h3>
+            <h3 data-i18n="stack.databases">Databases</h3>
             <ul class="skills">
-              <li><span>SQL Server</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
-              <li><span>PostgreSQL</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>MongoDB</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>DynamoDB</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
+              <li><span>SQL Server</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
+              <li><span>PostgreSQL</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>MongoDB</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>DynamoDB</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
             </ul>
           </article>
 
           <article class="panel">
-            <h3>Cloud / DevOps</h3>
+            <h3 data-i18n="stack.cloud">Cloud / DevOps</h3>
             <ul class="skills">
-              <li><span>AWS</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>Azure</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>CI/CD</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
-              <li><span>Serverless</span><span class="meter" data-level="4" aria-label="nivel 4 de 5"></span></li>
-              <li><span>Sentry</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
+              <li><span>AWS</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>Azure</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>CI/CD</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
+              <li><span>Serverless</span><span class="meter" role="img" data-level="4" aria-label="level 4 of 5"></span></li>
+              <li><span>Sentry</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
             </ul>
           </article>
 
           <article class="panel">
-            <h3>Herramientas</h3>
+            <h3 data-i18n="stack.tools">Tools</h3>
             <ul class="skills">
-              <li><span>Git</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
-              <li><span>Testing</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
-              <li><span>Linux</span><span class="meter" data-level="3" aria-label="nivel 3 de 5"></span></li>
-              <li><span>Unity</span><span class="meter" data-level="5" aria-label="nivel 5 de 5"></span></li>
+              <li><span>Git</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
+              <li><span>Testing</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
+              <li><span>Linux</span><span class="meter" role="img" data-level="3" aria-label="level 3 of 5"></span></li>
+              <li><span>Unity</span><span class="meter" role="img" data-level="5" aria-label="level 5 of 5"></span></li>
             </ul>
           </article>
         </div>
@@ -344,7 +382,7 @@
       <section class="section" id="proyectos">
         <header class="section-head">
           <span class="section-index" aria-hidden="true">[ 03 ]</span>
-          <h2>Proyectos</h2>
+          <h2 data-i18n="section.projects">Projects</h2>
           <span class="section-rule" aria-hidden="true"></span>
         </header>
 
@@ -355,10 +393,10 @@
             </a>
             <div class="project-top">
               <span class="project-year">2026</span>
-              <span class="project-badge">producto</span>
+              <span class="project-badge" data-i18n="proj.hotelerio.badge">product</span>
             </div>
             <h3>Hotelerio</h3>
-            <p>Sistema de gestión de alojamientos y reservas. Tests automatizados en CI/CD y observabilidad con Sentry.</p>
+            <p data-i18n="proj.hotelerio.desc">Accommodation and booking management system. Automated tests in CI/CD and observability with Sentry.</p>
             <ul class="tags">
               <li>React</li><li>TypeScript</li><li>Supabase</li><li>PostgreSQL</li><li>CI/CD</li><li>Sentry</li>
             </ul>
@@ -373,10 +411,10 @@
             </a>
             <div class="project-top">
               <span class="project-year">2026</span>
-              <span class="project-badge">producto</span>
+              <span class="project-badge" data-i18n="proj.pet.badge">product</span>
             </div>
             <h3>Mi Mascota</h3>
-            <p>Portal de identificación de mascotas por QR, con tests automatizados corriendo en CI/CD.</p>
+            <p data-i18n="proj.pet.desc">QR-based pet identification portal, with automated tests running in CI/CD.</p>
             <ul class="tags">
               <li>React</li><li>TypeScript</li><li>Supabase</li><li>PostgreSQL</li><li>CI/CD</li>
             </ul>
@@ -388,10 +426,10 @@
           <article class="project">
             <div class="project-top">
               <span class="project-year">2021</span>
-              <span class="project-badge">contenido</span>
+              <span class="project-badge" data-i18n="proj.magazine.badge">content</span>
             </div>
             <h3>Revista Foco Literario</h3>
-            <p>Sitio de noticias completo sobre arquitectura serverless en AWS.</p>
+            <p data-i18n="proj.magazine.desc">Full news site built on serverless architecture on AWS.</p>
             <ul class="tags">
               <li>AWS</li><li>Node.js</li><li>DynamoDB</li><li>Angular</li><li>Serverless</li>
             </ul>
@@ -399,11 +437,11 @@
 
           <article class="project">
             <div class="project-top">
-              <span class="project-year">varios</span>
-              <span class="project-badge">juegos</span>
+              <span class="project-year" data-i18n="proj.games.year">various</span>
+              <span class="project-badge" data-i18n="proj.games.badge">games</span>
             </div>
-            <h3>Prototipos de videojuegos</h3>
-            <p>Prototipos publicados y jugables, donde pruebo mecánicas y performance.</p>
+            <h3 data-i18n="proj.games.title">Game prototypes</h3>
+            <p data-i18n="proj.games.desc">Published, playable prototypes where I test mechanics and performance.</p>
             <ul class="tags">
               <li>Unity</li><li>C#</li>
             </ul>
@@ -417,19 +455,26 @@
       <section class="section" id="contacto">
         <header class="section-head">
           <span class="section-index" aria-hidden="true">[ 04 ]</span>
-          <h2>Contacto</h2>
+          <h2 data-i18n="section.contact">Contact</h2>
           <span class="section-rule" aria-hidden="true"></span>
         </header>
 
         <div class="contact-grid">
           <div class="contact-card">
-            <p class="contact-kicker">Disponible para</p>
+            <p class="contact-kicker" data-i18n="contact.kicker">Available for</p>
             <p class="contact-text">Full Stack Engineer · Backend Engineer · Software Engineer</p>
-            <p class="contact-sub">Montevideo, Uruguay o remoto.</p>
+            <p class="contact-sub" data-i18n="contact.sub">Montevideo, Uruguay or remote.</p>
 
             <div class="actions">
               <a class="btn btn-primary" href="mailto:rgonzalezfro@gmail.com">rgonzalezfro@gmail.com</a>
-              <a class="btn" href="cv-rafael-gonzalez-frowein.pdf" download>descargar cv</a>
+              <a
+                class="btn"
+                href="cv-rafael-gonzalez-frowein-en.pdf"
+                download
+                data-i18n="hero.action.cv"
+                data-i18n-href="hero.action.cvHref"
+                >download cv</a
+              >
               <a class="btn" href="https://www.linkedin.com/in/rgonzalezfro/" target="_blank" rel="noopener">
                 linkedin <span aria-hidden="true">↗</span>
               </a>
@@ -437,12 +482,12 @@
           </div>
 
           <div class="panel education">
-            <h3>Formación</h3>
-            <p class="edu-degree">Ingeniería en Sistemas de Información</p>
-            <p class="edu-meta">UTN Rosario · 2011 – 2015 · cursado</p>
+            <h3 data-i18n="edu.heading">Education</h3>
+            <p class="edu-degree" data-i18n="edu.degree">Information Systems Engineering</p>
+            <p class="edu-meta" data-i18n="edu.meta">UTN Rosario · 2011 – 2015 · coursework</p>
 
-            <h3>Idiomas</h3>
-            <p class="edu-meta">Español (nativo) · Inglés (profesional)</p>
+            <h3 data-i18n="edu.languagesHeading">Languages</h3>
+            <p class="edu-meta" data-i18n="edu.languages">Spanish (native) · English (professional)</p>
           </div>
         </div>
       </section>
@@ -452,6 +497,7 @@
       <p><span class="dim">©</span> <span id="year">2026</span> Rafael Gonzalez Frowein</p>
     </footer>
 
+    <script src="i18n.js" defer></script>
     <script src="main.js" defer></script>
   </body>
 </html>
